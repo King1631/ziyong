@@ -16,9 +16,11 @@
 const jsname='企鹅读书'
 const $ = Env(jsname)
 
+console.log(`\n========= 脚本执行时间(TM)：${new Date(new Date().getTime() + 0 * 60 * 60 * 1000).toLocaleString('zh', {hour12: false})} =========\n`)
+
 const logs = 0;   //0为关闭日志，1为开启
-const notifyInterval=3
-//0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每15次通知一次
+const notifyInterval=1
+//0为关闭通知，1为所有通知，2为宝箱领取成功通知，3为宝箱每18次通知一次
 
 
 
@@ -48,7 +50,7 @@ var tz=''
 
  {
 
-   for(var i=0;i<6;i++)//修改为i<账号数➕2
+   for(var i=0;i<5;i++)//修改为i<账号数➕1
  { (function(i) {
             setTimeout(function() {
 
@@ -78,7 +80,7 @@ if (i!=4)fgx()//自己修改为账号数
 
 if (i==4) showmsg()//自己修改为账号数
 
-if (i==5) $.done()//自己修改为账号数➕1
+if (i==5) $.done()//结束
 
  }
 
@@ -748,12 +750,14 @@ function showmsg() {
 if (notifyInterval==1)
 $.msg(jsname,'',tz)//显示所有通知
 
-else if (notifyInterval==2&&task.data.treasureBox.doneFlag==0)
+else if (notifyInterval==2&&box.data.amount>=0)
 $.msg(jsname,'',tz)//宝箱领取成功通知
 
 
-else if (notifyInterval==3&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
-$.msg(jsname,'',tz)//宝箱每15次通知一次
+else if (notifyInterval==3&&box.data.count==0||box.data.count==18||box.data.count==36||box.data.count==54||box.data.count==72)
+$.msg(jsname,'',tz)//宝箱每18次通知一次
+
+
 
 }
 
