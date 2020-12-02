@@ -752,7 +752,7 @@ else if (notifyInterval==2&&box.data.amount>=0)
 $.msg(jsname,'',tz)//宝箱领取成功通知
 
 
-else if (notifyInterval==3&&task.data.treasureBox.count==0||task.data.treasureBox.count==15||task.data.treasureBox.count==30||task.data.treasureBox.count==45||task.data.treasureBox.count==60)
+else if (notifyInterval==3&&box.data.count==0||box.data.count==15||box.data.count==30||box.data.count==45||box.data.count==60)
 $.msg(jsname,'',tz)//宝箱每15次通知一次
 
 
