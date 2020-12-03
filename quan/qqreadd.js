@@ -113,11 +113,9 @@ tz+='👤'+'\n'
 function all()
 
  {
-
-   for(var i=0;i<16;i++)
+   for(var i=0;i<18;i++)
  { (function(i) {
             setTimeout(function() {
-
      if (i==0)
 qqreadinfo();//用户名
 
@@ -127,52 +125,56 @@ qqreadconfig();//时长查询
 else if (i==2)
 qqreadtask();//任务列表
 
-else if (i==3)
+else if (i==3&&task.data.taskList[2].doneFlag==0)
 qqreadsign();//金币签到
 
 else if (i==4&&task.data.treasureBox.doneFlag==0)
 qqreadbox();//宝箱
 
-else if (i==5&&task.data.taskList[2].doneFlag==0)
+else if (i==5&&task.data.taskList[1].doneFlag==0)
 qqreadssr1();//阅读金币1
 
-else if (i==6)
+else if (i==6&&config.data.pageParams.todayReadSeconds/3600<=maxtime)
 qqreadtime();//上传时长
 
-else if (i==7&&task.data.taskList[0].doneFlag==0)
+else if (i==7&&task.data.taskList[2].doneFlag==0)
 qqreadtake();//阅豆签到
 
-else if (i==8&&task.data.taskList[1].doneFlag==0)
+else if (i==8&&task.data.taskList[0].doneFlag==0)
 qqreaddayread();//阅读任务
 
-else if (i==9&&task.data.taskList[2].doneFlag==0)
+else if (i==9&&task.data.taskList[1].doneFlag==0)
 qqreadssr2();//阅读金币2
 
 else if (i==10&&task.data.taskList[3].doneFlag==0)
 qqreadvideo();//视频任务
 
-else if(i==11&&sign.data.videoDoneFlag==0)
+else if(i==11&&task.data.taskList[2].doneFlag==0)
 qqreadsign2();//签到翻倍
 
 else if (i==12&&task.data.treasureBox.videoDoneFlag==0)
 qqreadbox2();//宝箱翻倍
 
-else if (i==13&&task.data.taskList[2].doneFlag==0)
+else if (i==13&&task.data.taskList[1].doneFlag==0)
 qqreadssr3();//阅读金币3
 
 else if (i==14)
 qqreadwktime();//周时长查询
 
-
 else if (i==15)
 qqreadpick();//领周时长奖励
+
+else if (i==16)
+showmsg();//通知
+
+else if (i==17)
+$.done();//结束
 
     }
 , (i + 1) *dd*1000);
                 })(i)
   }
 }
-
 
 
 //任务列表
@@ -185,22 +187,67 @@ return new Promise((resolve, reject) => {
      if(logs) $.log(`${jsname}, 任务列表: ${data}`)
      task =JSON.parse(data)
 tz+=
-'【任务列表】:余额'+task.data.user.amount+'金币\n'+
-'【第'+task.data.invite.issue+'期】:时间'+task.data.invite.dayRange+'\n'
-+'已邀请'+task.data.invite.inviteCount+'人，再邀请'+task.data.invite.nextInviteConfig.count+'人获得'+task.data.invite.nextInviteConfig.amount+'金币\n'+
-'【'+task.data.taskList[0].title+'】:'+task.data.taskList[0].amount+'金币,'+task.data.taskList[0].actionText+'\n'+
-'【'+task.data.taskList[1].title+'】:'+task.data.taskList[1].amount+'金币,'+task.data.taskList[1].actionText+'\n'+
-'【'+task.data.taskList[2].title+'】:'+task.data.taskList[2].amount+'金币,'+task.data.taskList[2].actionText+'\n'+
-'【'+task.data.taskList[3].title+'】:'+task.data.taskList[3].amount+'金币,'+task.data.taskList[3].actionText+'\n'+
-'【宝箱任务'+(task.data.treasureBox.count+1)+'】:'+task.data.treasureBox.tipText+'\n'+
-'【'+task.data.fans.title+'】:'+task.data.fans.fansCount+'个好友,'+task.data.fans.todayAmount+'金币\n'
+'【现金余额】:'+
+    (task.data.user.amount/10000).toFixed(2)+
+	'元\n'+
+    '【第'+
+	task.data.invite.issue+
+	'期】:时间'+
+    task.data.invite.dayRange+
+	'\n'+
+    ' 已邀请'+
+	task.data.invite.inviteCount+
+    '人，再邀请'+
+	task.data.invite.nextInviteConfig.count+
+    '人获得'+
+	task.data.invite.nextInviteConfig.amount+
+	'金币\n'+
+    '【'+
+	task.data.taskList[0].title+
+	'】:'+
+    task.data.taskList[0].amount+
+	'金币,'+
+    task.data.taskList[0].actionText+
+	'\n'+
+    '【'+
+	task.data.taskList[1].title+
+	'】:'+
+    task.data.taskList[1].amount+
+	'金币,'+
+    task.data.taskList[1].actionText+
+	'\n'+
+    '【'+
+	task.data.taskList[2].title+
+	'】:'+
+    task.data.taskList[2].amount+
+    '金币,'+
+    task.data.taskList[2].actionText+
+    '\n'+
+    '【'+
+	task.data.taskList[3].title+
+    '】:'+
+    task.data.taskList[3].amount+
+    '金币,'+
+    task.data.taskList[3].actionText+
+    '\n'+
+    '【宝箱任务'+
+    (task.data.treasureBox.count+1)+
+    '】:'+
+    task.data.treasureBox.tipText+
+    '\n'+
+    '【'+task.data.fans.title+
+	'】:'+
+    task.data.fans.fansCount+
+    '个好友,'+
+    task.data.fans.todayAmount+
+    '金币\n'
+
 resolve()
 
     })
 
    })
   }  
-
 
 
 //用户名
@@ -554,7 +601,7 @@ tz+='【周时长奖励'+(i+1)+'】:领取'+Packageid[i]+'阅豆\n'
 
 function showmsg() {	
 console.log(tz)
-
+	
 if (notifyInterval==1)
 $.msg(jsname,'',tz)//显示所有通知
 
