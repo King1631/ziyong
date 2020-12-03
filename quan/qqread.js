@@ -64,7 +64,7 @@ var kz='';
 var task='';
 var config='';
 
-var COOKIES_SPLIT='\n'  //自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
+var COOKIES_SPLIT='\2'  //自定义多cookie之间连接的分隔符，默认为\n换行分割，不熟悉的不要改动和配置，为了兼容本地node执行
 
 const logs = 0;   //0为关闭日志，1为开启
 const notifyInterval=3
