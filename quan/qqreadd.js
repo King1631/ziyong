@@ -201,7 +201,8 @@ return new Promise((resolve, reject) => {
      task =JSON.parse(data)
 tz+=
 '【现金余额】:'+
-        task.data.user.amount+'金币\n'+
+    (task.data.user.amount/10000).toFixed(2)+
+	'元\n'+
     '【第'+
 	task.data.invite.issue+
 	'期】:时间'+
@@ -259,7 +260,8 @@ resolve()
     })
 
    })
-  } 
+  }  
+
 
 
 //用户名
