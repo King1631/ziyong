@@ -123,7 +123,7 @@ function all()
 
  {
 
-   for(var i=0;i<18;i++)
+   for(var i=0;i<16;i++)
  { (function(i) {
             setTimeout(function() {
 
@@ -172,19 +172,23 @@ qqreadssr3();//阅读金币3
 else if (i==14)
 qqreadwktime();//周时长查询
 
+
 else if (i==15)
 qqreadpick();//领周时长奖励
 
-else if (i==16)
-showmsg();//通知
 
-else if (i==17)
-$.done();//结束
 
-    }
+ }
+
+
 , (i + 1) *dd*1000);
                 })(i)
-  }
+
+
+
+}
+
+
 }
 
 
