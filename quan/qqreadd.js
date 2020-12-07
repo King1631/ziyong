@@ -38,7 +38,7 @@ const wktimess=1200//周奖励领取标准，默认1200分钟
 
 
 
-const jbidhj=['1','2','3','4']//有多少号就依次填写
+const jbidhj=['1','2','3','4','5']//有多少号就依次填写
 
 
 
@@ -48,7 +48,7 @@ var tz=''
 
  {
 
-   for(var i=0;i<5;i++)//修改为i<账号数➕1
+   for(var i=0;i<6;i++)//修改为i<账号数➕1
  { (function(i) {
             setTimeout(function() {
 
@@ -74,11 +74,11 @@ all();
 
 
 
-if (i!=4)fgx()//自己修改为账号数
+if (i!=5)fgx()//自己修改为账号数
 
-if (i==4) showmsg()//自己修改为账号数
+if (i==5) showmsg()//自己修改为账号数
 
-if (i==5) $.done()//结束
+if (i==6) $.done()//结束
 
  }
 
