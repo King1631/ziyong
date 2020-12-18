@@ -3,9 +3,9 @@ const shareCodes = [
   {
     zd: $.getdata("zd_shareCode1") || "jusbpjdxrrq4fslhlcq6zputpu3h7wlwy7o5jii",
     nc: $.getdata("nc_shareCode1") || "2af647492a6c4a08be0d68405d072209",
-    mc: $.getdata("mc_shareCode1") || "MTE1NDQ5MzYwMDAwMDAwNDEyMzM2NzM= ",
-    dd: $.getdata("mc_shareCode1") || "P04z54XCjVWnYaS5jQLCGL_3HpDlu3sI28 ",
-    jx: $.getdata("mc_shareCode1") || "RPlkO7LxKTRvjFDAuf28pA== ",
+    mc: $.getdata("mc_shareCode1") || "MTE1NDQ5MzYwMDAwMDAwNDEyMzM2NzM=",
+    dd: $.getdata("mc_shareCode1") || "P04z54XCjVWnYaS5jQLCGL_3HpDlu3sI28",
+    jx: $.getdata("mc_shareCode1") || "RPlkO7LxKTRvjFDAuf28pA==",
   },
   {
     zd: $.getdata("zd_shareCode2") || "",
