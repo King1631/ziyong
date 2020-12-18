@@ -58,18 +58,21 @@ $.random = Math.floor(Math.random() * 60);
   .catch((e) => $.logErr(e))
   .finally(() => $.done());
 
-// 种豆得豆
-function createZd(zdUrl) {
+function create(path, name) {
   return new Promise((resolve) => {
-    const url = { url: zdUrl };
+    const url = { url: path };
     $.get(url, async (err, resp, data) => {
+      if (err) {
+        $.log(JSON.stringify(err));
+        resolve(err);
+        return;
+      }
       try {
-        const needAgain = await checkWhetherNeedAgain(resp, createZd, url);
+        const needAgain = await checkWhetherNeedAgain(resp, create, path, name);
         if (needAgain) return;
-        const _data = JSON.parse(data);
-        if (_data) {
-          $.result.push(`种豆：${_data.message}`);
-        }
+        const { message } = JSON.parse(data);
+        $.log(`\n${message}\n${data}`);
+        $.result.push(`${name}： ${message}`);
       } catch (e) {
         $.logErr(e, resp);
       } finally {
@@ -79,100 +82,16 @@ function createZd(zdUrl) {
   });
 }
 
-// 京东农场
-function createNc(ncUrl) {
-  return new Promise((resolve) => {
-    const url = { url: ncUrl };
-    $.get(url, async (err, resp, data) => {
-      try {
-        const needAgain = await checkWhetherNeedAgain(resp, createNc, url);
-        if (needAgain) return;
-        const _data = JSON.parse(data);
-        if (_data) {
-          $.result.push(`农场：${_data.message}`);
-        }
-      } catch (e) {
-        $.logErr(e, resp);
-      } finally {
-        resolve();
-      }
-    });
-  });
-}
-
-// 京东萌宠
-function createMc(mcUrl) {
-  return new Promise((resolve) => {
-    const url = { url: mcUrl };
-    $.get(url, async (err, resp, data) => {
-      try {
-        const needAgain = await checkWhetherNeedAgain(resp, createMc, url);
-        if (needAgain) return;
-        const _data = JSON.parse(data);
-        if (_data) {
-          $.result.push(`萌宠：${_data.message}`);
-        }
-      } catch (e) {
-        $.logErr(e, resp);
-      } finally {
-        resolve();
-      }
-    });
-  });
-}
-
-// 东东工厂
-function createMc(mcUrl) {
-  return new Promise((resolve) => {
-    const url = { url: mcUrl };
-    $.get(url, async (err, resp, data) => {
-      try {
-        const needAgain = await checkWhetherNeedAgain(resp, createMc, url);
-        if (needAgain) return;
-        const _data = JSON.parse(data);
-        if (_data) {
-          $.result.push(`东东：${_data.message}`);
-        }
-      } catch (e) {
-        $.logErr(e, resp);
-      } finally {
-        resolve();
-      }
-    });
-  });
-}
-
-// 惊喜工厂
-function createMc(mcUrl) {
-  return new Promise((resolve) => {
-    const url = { url: mcUrl };
-    $.get(url, async (err, resp, data) => {
-      try {
-        const needAgain = await checkWhetherNeedAgain(resp, createMc, url);
-        if (needAgain) return;
-        const _data = JSON.parse(data);
-        if (_data) {
-          $.result.push(`惊喜：${_data.message}`);
-        }
-      } catch (e) {
-        $.logErr(e, resp);
-      } finally {
-        resolve();
-      }
-    });
-  });
-}
-
-function checkWhetherNeedAgain(resp, fun, url) {
+function checkWhetherNeedAgain(resp, fun, url, name) {
   return new Promise(async (resolve) => {
     if ((resp && resp.statusCode !== 200) || !resp.body) {
       await $.wait($.random);
-      await fun(url);
+      await fun(url, name);
       resolve(true);
     } else {
       resolve(false);
     }
-  })
+  });
 }
 
 function showMsg() {
