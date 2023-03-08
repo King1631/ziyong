@@ -1,6 +1,5 @@
-#DOMAIN-SUFFIX,myparallels.cn
-#DOMAIN-SUFFIX,myparallels.com
-#DOMAIN-SUFFIX,parallels.cn
-#DOMAIN-SUFFIX,parallels.com.cdn.cloudflare.net
-#DOMAIN-SUFFIX,parallels.com
-
+DOMAIN-SUFFIX,myparallels.cn
+DOMAIN-SUFFIX,myparallels.com
+DOMAIN-SUFFIX,parallels.cn
+DOMAIN-SUFFIX,parallels.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,parallels.com
