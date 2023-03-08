@@ -4,7 +4,3 @@
 #DOMAIN-SUFFIX,parallels.com.cdn.cloudflare.net
 #DOMAIN-SUFFIX,parallels.com
 
-
-OR,((DOMAIN-SUFFIX,myparallels.cn), (DOMAIN-SUFFIX,myparallels.com), (DOMAIN-SUFFIX,parallels.cn), (DOMAIN-SUFFIX,parallels.com.cdn.cloudflare.net), (DOMAIN-SUFFIX,parallels.com)),REJECT
-OR,((DOMAIN,account.jetbrains.com), (DOMAIN,www.jetbrains.com)),REJECT-TINYGIF
-AND,((PROTOCOL,UDP), (DEST-PORT,443)),REJECT-NO-DROP
