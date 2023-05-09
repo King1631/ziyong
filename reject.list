@@ -1,0 +1,12 @@
+DOMAIN-SUFFIX,oauth.account.jetbrains.com
+DOMAIN-SUFFIX,jrebel.npegeek.com
+DOMAIN-SUFFIX,www.jetbrains.com
+DOMAIN-SUFFIX,account.ietbrains.com
+DOMAIN-SUFFIX,parallels.com
+DOMAIN-SUFFIX,parallels.com.cdn.cloudflare.net
+DOMAIN-SUFFIX,myparallels.com
+DOMAIN-SUFFIX,myparallels.cn
+#防止应用循环请求
+0.0.0.0/32,REJECT,no-resolve
+DOMAIN,updates.getcleanshot.com
+DOMAIN,prod.legit.maketheweb.pl
