@@ -1,8 +1,8 @@
 DOMAIN-SUFFIX,gvt1.com
-DOMAIN-SUFFIX,8040824.xyz
 DOMAIN,appstorrent.ru
 DOMAIN,macapp.org.cn
 DOMAIN-SUFFIX,rm-www-928324151.ap-northeast-1.elb.amazonaws.com
 DOMAIN-SUFFIX,rebatesme.com
 DOMAIN-SUFFIX,rebatesme.cn
-
+IP-CIDR,34.150.92.239/32
+IP-CIDR,150.230.100.107/32
